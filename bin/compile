@@ -53,6 +53,13 @@ for BUILDPACK in $(cat $1/.buildpacks); do
 
       if [ -x $dir/bin/release ]; then
         $dir/bin/release $1 > $1/last_pack_release.out
+
+        if [ -f $dir/.set_env_after_compile ]; then
+          source $dir/.set_env_after_compile $1
+        fi
+        echo "=====> Running next buildpack with environment:"
+        env
+
       fi
     fi
   fi
