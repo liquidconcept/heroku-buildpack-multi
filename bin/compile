@@ -56,8 +56,8 @@ for BUILDPACK in $(cat $1/.buildpacks); do
 
         if [ -f $dir/.set_env_after_compile ]; then
           source $dir/.set_env_after_compile $1
+          echo "-----> Running next buildpack with setted environement"
         fi
-        echo "-----> Running next buildpack with environment:"
 
       fi
     fi
